@@ -92,6 +92,24 @@
       color: var(--sea);
     }
 
+    .day-date {
+      font-size: 0.85rem;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .day-start {
+      font-size: 0.8rem;
+      color: var(--sea);
+      font-weight: 600;
+    }
+
+    .day-title {
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+    }
+
     .day-stats {
       display: flex;
       gap: 0.75rem;
@@ -313,7 +331,11 @@
     <!-- Päev 1 -->
     <section class="day">
       <div class="day-header">
-        <h2>Päev 1</h2>
+        <div class="day-title">
+          <h2>Päev 1</h2>
+          <span class="day-date">16.07</span>
+          <span class="day-start">Start 7:00 / 8:30 (Viljandist)</span>
+        </div>
         <div class="day-stats">
           <span class="stat"><strong>260</strong> km</span>
           <span class="stat"><strong>3,75</strong> h</span>
@@ -348,7 +370,10 @@
     <!-- Päev 2 -->
     <section class="day">
       <div class="day-header">
-        <h2>Päev 2</h2>
+        <div class="day-title">
+          <h2>Päev 2</h2>
+          <span class="day-date">17.07</span>
+        </div>
         <div class="day-stats">
           <span class="stat"><strong>20</strong> km</span>
           <span class="stat"><strong>0,25</strong> h</span>
@@ -368,7 +393,10 @@
     <!-- Päev 3 -->
     <section class="day">
       <div class="day-header">
-        <h2>Päev 3</h2>
+        <div class="day-title">
+          <h2>Päev 3</h2>
+          <span class="day-date">18.07</span>
+        </div>
         <div class="day-stats">
           <span class="stat"><strong>100</strong> km</span>
           <span class="stat"><strong>1,75</strong> h</span>
@@ -396,7 +424,10 @@
     <!-- Päev 4 -->
     <section class="day">
       <div class="day-header">
-        <h2>Päev 4</h2>
+        <div class="day-title">
+          <h2>Päev 4</h2>
+          <span class="day-date">19.07</span>
+        </div>
         <div class="day-stats">
           <span class="stat"><strong>60</strong> km</span>
           <span class="stat"><strong>1</strong> h</span>
@@ -419,7 +450,10 @@
     <!-- Päev 5 -->
     <section class="day">
       <div class="day-header">
-        <h2>Päev 5</h2>
+        <div class="day-title">
+          <h2>Päev 5</h2>
+          <span class="day-date">20.07</span>
+        </div>
       </div>
       <div class="day-body">
         <p class="note">Rannapäev – puhkepäev, sõitmata</p>
@@ -429,7 +463,11 @@
     <!-- Päev 6 -->
     <section class="day">
       <div class="day-header">
-        <h2>Päev 6</h2>
+        <div class="day-title">
+          <h2>Päev 6</h2>
+          <span class="day-date">21.07</span>
+          <span class="day-start">Start 10:00 / 11:30 / 13:00</span>
+        </div>
         <div class="day-stats">
           <span class="stat"><strong>260</strong> km</span>
           <span class="stat"><strong>3,5</strong> h</span>
