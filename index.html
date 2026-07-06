@@ -412,6 +412,54 @@
       font-size: 0.8rem;
       font-weight: 700;
     }
+
+    .menu-days {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .menu-day {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      background: white;
+    }
+
+    .menu-day h3 {
+      margin: 0;
+      padding: 0.65rem 1rem;
+      background: var(--sea-light);
+      font-size: 0.95rem;
+      color: var(--sea);
+    }
+
+    .menu-meals {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .menu-meals li {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      padding: 0.55rem 1rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .menu-meals .meal-label {
+      width: 4rem;
+      flex-shrink: 0;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .menu-meals .meal-item {
+      color: var(--text);
+    }
   </style>
 </head>
 <body>
@@ -429,6 +477,7 @@
     <nav class="tabs" role="tablist">
       <button class="tab-btn active" role="tab" aria-selected="true" data-tab="reisiplaan">Reisiplaan</button>
       <button class="tab-btn" role="tab" aria-selected="false" data-tab="telkimisalad">Telkimisalad</button>
+      <button class="tab-btn" role="tab" aria-selected="false" data-tab="menuu">Menüü</button>
     </nav>
 
     <div id="reisiplaan" class="tab-panel active" role="tabpanel">
@@ -694,6 +743,66 @@
               </a>
             </li>
           </ol>
+        </div>
+      </section>
+    </div>
+
+    <div id="menuu" class="tab-panel" role="tabpanel">
+      <section class="day">
+        <div class="day-header">
+          <h2>Menüü</h2>
+        </div>
+        <div class="day-body">
+          <div class="menu-days">
+            <div class="menu-day">
+              <h3>Päev 1 · 16.07</h3>
+              <ul class="menu-meals">
+                <li><span class="meal-label">Hommik</span><span class="meal-item">—</span></li>
+                <li><span class="meal-label">Lõuna</span><span class="meal-item">—</span></li>
+                <li><span class="meal-label">Õhtu</span><span class="meal-item">—</span></li>
+              </ul>
+            </div>
+            <div class="menu-day">
+              <h3>Päev 2 · 17.07</h3>
+              <ul class="menu-meals">
+                <li><span class="meal-label">Hommik</span><span class="meal-item">—</span></li>
+                <li><span class="meal-label">Lõuna</span><span class="meal-item">—</span></li>
+                <li><span class="meal-label">Õhtu</span><span class="meal-item">—</span></li>
+              </ul>
+            </div>
+            <div class="menu-day">
+              <h3>Päev 3 · 18.07</h3>
+              <ul class="menu-meals">
+                <li><span class="meal-label">Hommik</span><span class="meal-item">—</span></li>
+                <li><span class="meal-label">Lõuna</span><span class="meal-item">—</span></li>
+                <li><span class="meal-label">Õhtu</span><span class="meal-item">—</span></li>
+              </ul>
+            </div>
+            <div class="menu-day">
+              <h3>Päev 4 · 19.07</h3>
+              <ul class="menu-meals">
+                <li><span class="meal-label">Hommik</span><span class="meal-item">—</span></li>
+                <li><span class="meal-label">Lõuna</span><span class="meal-item">—</span></li>
+                <li><span class="meal-label">Õhtu</span><span class="meal-item">—</span></li>
+              </ul>
+            </div>
+            <div class="menu-day">
+              <h3>Päev 5 · 20.07</h3>
+              <ul class="menu-meals">
+                <li><span class="meal-label">Hommik</span><span class="meal-item">—</span></li>
+                <li><span class="meal-label">Lõuna</span><span class="meal-item">—</span></li>
+                <li><span class="meal-label">Õhtu</span><span class="meal-item">—</span></li>
+              </ul>
+            </div>
+            <div class="menu-day">
+              <h3>Päev 6 · 21.07</h3>
+              <ul class="menu-meals">
+                <li><span class="meal-label">Hommik</span><span class="meal-item">—</span></li>
+                <li><span class="meal-label">Lõuna</span><span class="meal-item">—</span></li>
+                <li><span class="meal-label">Õhtu</span><span class="meal-item">—</span></li>
+              </ul>
+            </div>
+          </div>
         </div>
       </section>
     </div>
