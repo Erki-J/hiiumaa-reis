@@ -284,7 +284,8 @@
     .camp-list a {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      justify-content: space-between;
+      gap: 1rem;
       padding: 0.85rem 0;
       color: var(--sea);
       text-decoration: none;
@@ -293,6 +294,34 @@
 
     .camp-list a:hover {
       color: var(--accent);
+    }
+
+    .camp-main {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      min-width: 0;
+    }
+
+    .camp-note {
+      font-size: 0.8rem;
+      color: var(--muted);
+      font-weight: 400;
+      text-align: right;
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 540px) {
+      .camp-list a {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+      }
+
+      .camp-note {
+        text-align: left;
+        padding-left: 2.5rem;
+      }
     }
 
     .camp-list .num {
@@ -500,38 +529,37 @@
           <ol class="camp-list">
             <li>
               <a href="https://rmk.ee/looduses-liikumine/kuhu-minna/torvanina-telkimisala/" target="_blank" rel="noopener">
-                <span class="num">1</span>
-                Tõrvanina telkimisala
+                <span class="camp-main"><span class="num">1</span>Tõrvanina telkimisala</span>
+                <span class="camp-note">Esimesed ööd</span>
               </a>
             </li>
             <li>
               <a href="https://rmk.ee/looduses-liikumine/kuhu-minna/kaleste-telkimisala/" target="_blank" rel="noopener">
-                <span class="num">2</span>
-                Kaleste telkimisala
+                <span class="camp-main"><span class="num">2</span>Kaleste telkimisala</span>
+                <span class="camp-note">Viimased ööd · lähedal Hirmuste / Mägipä / Palli</span>
               </a>
             </li>
             <li>
               <a href="https://rmk.ee/looduses-liikumine/kuhu-minna/hirmuste-telkimisala/" target="_blank" rel="noopener">
-                <span class="num">3</span>
-                Hirmuste telkimisala
+                <span class="camp-main"><span class="num">3</span>Hirmuste telkimisala</span>
+                <span class="camp-note">Lähedal → Kaleste / Mägipä / Palli</span>
               </a>
             </li>
             <li>
               <a href="https://rmk.ee/looduses-liikumine/kuhu-minna/magipa-telkimisala/" target="_blank" rel="noopener">
-                <span class="num">4</span>
-                Mägipä telkimisala
+                <span class="camp-main"><span class="num">4</span>Mägipä telkimisala</span>
+                <span class="camp-note">Lähedal → Kaleste / Hirmuste / Palli</span>
               </a>
             </li>
             <li>
               <a href="https://rmk.ee/looduses-liikumine/kuhu-minna/palli-telkimisala/" target="_blank" rel="noopener">
-                <span class="num">5</span>
-                Palli telkimisala
+                <span class="camp-main"><span class="num">5</span>Palli telkimisala</span>
+                <span class="camp-note">Lähedal → Kaleste / Hirmuste / Palli</span>
               </a>
             </li>
             <li>
               <a href="https://rmk.ee/looduses-liikumine/kuhu-minna/saaretirbi-telkimisala/" target="_blank" rel="noopener">
-                <span class="num">6</span>
-                Sääretirbi telkimisala
+                <span class="camp-main"><span class="num">6</span>Sääretirbi telkimisala</span>
               </a>
             </li>
           </ol>
