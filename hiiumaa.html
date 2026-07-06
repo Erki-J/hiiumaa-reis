@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hiiumaa reisiplaan</title>
+  <style>
+    :root {
+      --sea: #1a6b7c;
+      --sea-light: #e8f4f6;
+      --sand: #f5f0e8;
+      --text: #1e293b;
+      --muted: #64748b;
+      --border: #cbd5e1;
+      --accent: #0ea5e9;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      background: linear-gradient(180deg, var(--sea-light) 0%, var(--sand) 100%);
+      color: var(--text);
+      line-height: 1.5;
+      min-height: 100vh;
+    }
+
+    header {
+      background: var(--sea);
+      color: white;
+      padding: 2rem 1.5rem;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0 0 0.25rem;
+      font-size: 1.75rem;
+      font-weight: 700;
+    }
+
+    .header-meta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem 1.5rem;
+      margin: 0;
+      opacity: 0.85;
+      font-size: 0.95rem;
+    }
+
+    .header-stats {
+      margin: 0;
+      font-size: 0.95rem;
+      opacity: 0.85;
+    }
+
+    .header-stats strong {
+      font-weight: 600;
+    }
+
+    main {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 1.5rem 1rem 3rem;
+    }
+
+    .day {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+      margin-bottom: 1.25rem;
+      overflow: hidden;
+    }
+
+    .day-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1rem 1.25rem;
+      background: var(--sea-light);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .day-header h2 {
+      margin: 0;
+      font-size: 1.15rem;
+      color: var(--sea);
+    }
+
+    .day-stats {
+      display: flex;
+      gap: 0.75rem;
+      flex-shrink: 0;
+    }
+
+    .stat {
+      font-size: 0.8rem;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.2rem 0.5rem;
+      white-space: nowrap;
+    }
+
+    .stat strong {
+      color: var(--sea);
+    }
+
+    .day-body {
+      padding: 1rem 1.25rem 1.25rem;
+    }
+
+    .route-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .route-list li {
+      position: relative;
+      padding: 0.5rem 0 0.5rem 1.5rem;
+      border-left: 2px solid var(--border);
+      margin-left: 0.4rem;
+    }
+
+    .route-list li:last-child {
+      border-left-color: transparent;
+    }
+
+    .route-list li::before {
+      content: "";
+      position: absolute;
+      left: -0.45rem;
+      top: 0.85rem;
+      width: 0.65rem;
+      height: 0.65rem;
+      background: var(--accent);
+      border-radius: 50%;
+      border: 2px solid white;
+      box-shadow: 0 0 0 1px var(--accent);
+    }
+
+    .route-list li.activity::before {
+      background: #f59e0b;
+      box-shadow: 0 0 0 1px #f59e0b;
+    }
+
+    .leg-stats {
+      display: block;
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 0.15rem;
+    }
+
+    .maps-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      margin-top: 1rem;
+      font-size: 0.875rem;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .maps-link:hover {
+      text-decoration: underline;
+    }
+
+    .maps-link.placeholder {
+      color: var(--muted);
+      font-style: italic;
+      pointer-events: none;
+    }
+
+    .note {
+      margin: 0;
+      padding: 0.75rem 1rem;
+      background: #fffbeb;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      color: #92400e;
+    }
+
+    footer {
+      text-align: center;
+      padding: 0 1rem 2rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Hiiumaa reisiplaan</h1>
+    <div class="header-meta">
+      <p>6 päeva · telkimine &amp; avastamine</p>
+      <p class="header-stats"><strong>Km kokku:</strong> 700 · <strong>sõiduaeg kokku:</strong> 10,25 h</p>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- Päev 1 -->
+    <section class="day">
+      <div class="day-header">
+        <h2>Päev 1</h2>
+        <div class="day-stats">
+          <span class="stat"><strong>260</strong> km</span>
+          <span class="stat"><strong>3,75</strong> h</span>
+        </div>
+      </div>
+      <div class="day-body">
+        <ul class="route-list">
+          <li>
+            Kodust → Rohuküla sadam
+            <span class="leg-stats">190 km · 2,5 h</span>
+          </li>
+          <li>Heltermaa sadam, Heltermaa, 92312</li>
+          <li>Sääretirp</li>
+          <li>Nasva, 92130</li>
+          <li>Elamuskeskus Tuuletorn – Mäe tn 4, Käina, 92101</li>
+          <li>Lavendlitalu, Kärdla-Käina, Tubala, 92311</li>
+          <li>
+            RMK Tõrvanina telkimisala, Tareste küla, 92350
+            <span class="leg-stats">Saare peal: 70 km · 1,25 h</span>
+          </li>
+        </ul>
+        <a class="maps-link" href="https://www.google.com/maps/dir/Heltermaa+sadam,+Heltermaa,+92312+Hiiu+maakond/S%C3%A4%C3%A4retirp/Nasva,+92130+Hiiu+maakond/Elamuskeskus+Tuuletorn+-+Windtower+Experience,+M%C3%A4e+tn+4,+K%C3%A4ina,+92101+Hiiu+maakond/Lavendlitalu,+K%C3%A4rdla-K%C3%A4ina,+Tubala,+92311+Hiiu+maakond/RMK+T%C3%B5rvanina+telkimisala,+Tareste+k%C3%BCla,+92350+Hiiu+maakond/@58.8992794,22.529181,10z/data=!4m38!4m37!1m5!1m1!1s0x46f2963659b09ccf:0xc52888e6b9201fa5!2m2!1d23.0472654!2d58.8662383!1m5!1m1!1s0x46f2926881c6ef27:0xb06ca7cbb0f3f95f!2m2!1d22.8075!2d58.7597222!1m5!1m1!1s0x46f2eccd73eb956d:0x1f54dfd168263857!2m2!1d22.7501878!2d58.8114859!1m5!1m1!1s0x46f2932c1809782b:0xf59f1f68ed063183!2m2!1d22.7731399!2d58.8307467!1m5!1m1!1s0x46f2c18a1eb79483:0x65c37d82c761e3d1!2m2!1d22.778091!2d58.9386339!1m5!1m1!1s0x46f2c370a45fa97f:0x4e0669ca4cc36b8b!2m2!1d22.686534!2d59.0396789!3e0?entry=ttu&amp;g_ep=EgoyMDI2MDYyOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener">Ava Google Maps</a>
+    <section class="day">
+      <div class="day-header">
+        <h2>Päev 2</h2>
+        <div class="day-stats">
+          <span class="stat"><strong>20</strong> km</span>
+          <span class="stat"><strong>0,25</strong> h</span>
+        </div>
+      </div>
+      <div class="day-body">
+        <ul class="route-list">
+          <li>RMK Tõrvanina telkimisala, Tareste küla, 92350</li>
+          <li class="activity">Rannapäev</li>
+          <li>Kärdla</li>
+          <li>RMK Tõrvanina telkimisala, Tareste küla, 92350</li>
+        </ul>
+        <a class="maps-link" href="https://www.google.com/maps/dir/K%C3%A4rdla,+Hiiu+maakond/T%C3%B5rvanina+rand,+Tareste,+92219+Hiiu+maakond/@58.9500594,22.2447428,10.25z/data=!4m14!4m13!1m5!1m1!1s0x46f2c17faeebd2b1:0x49ca74d4744e11bd!2m2!1d22.7411775!2d58.9987098!1m5!1m1!1s0x46f2c37d805ddcbb:0x373d1f2ce30fd768!2m2!1d22.6835827!2d59.048463!3e0?entry=ttu&amp;g_ep=EgoyMDI2MDYyOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener">Ava Google Maps</a>
+      </div>
+    </section>
+
+    <!-- Päev 3 -->
+    <section class="day">
+      <div class="day-header">
+        <h2>Päev 3</h2>
+        <div class="day-stats">
+          <span class="stat"><strong>100</strong> km</span>
+          <span class="stat"><strong>1,75</strong> h</span>
+        </div>
+      </div>
+      <div class="day-body">
+        <ul class="route-list">
+          <li>RMK Tõrvanina telkimisala, Tareste küla, 92350</li>
+          <li>Kaibaldi liivik, Kanapeeksi, 92214</li>
+          <li>Hiiumaa Eiffeli elamuspark ja kohvik, Reigi, 92265</li>
+          <li>Kurisu neeluauk, Kurisu, 92245</li>
+          <li>Viskoosa, Kõrgessaare, 92201</li>
+          <li>Tahkuna Tuletorn, Tahkuna, 92226</li>
+          <li>Tahkuna 180mm rannapatarei, Lehtma, 92219</li>
+          <li>Mälestuskivi Hiiumaalt küüdituile, Lehtma, 92219</li>
+          <li>RMK Tõrvanina telkimisala, Tareste küla, 92350</li>
+        </ul>
+        <a class="maps-link" href="https://www.google.com/maps/dir/RMK+T%C3%B5rvanina+telkimisala,+Tareste+k%C3%BCla,+92350+Hiiu+maakond/M%C3%A4lestuskivi+Hiiumaalt+k%C3%BC%C3%BCditatuile,+Lehtma,+92219+Hiiu+maakond/Tahkuna+180mm+rannapatarei,+Lehtma,+92219+Hiiu+maakond/Tahkuna+Tuletorn,+Tahkuna,+92226+Hiiu+maakond/Kaibaldi+liivik,+Kanapeeksi,+92214+Hiiu+maakond/Hiiumaa+Eiffeli+elamuspark+ja+kohvik,+Reigi,+92265+Hiiu+maakond/Kurisu+neeluauk,+Kurisu,+92245+Hiiu+maakond/Viskoosa,+K%C3%B5rgessaare,+92201+Hiiu+maakond/RMK+T%C3%B5rvanina+telkimisala,+Tareste+k%C3%BCla,+92350+Hiiu+maakond/@59.0249921,22.4101257,11z/data=!3m1!4b1!4m56!4m55!1m5!1m1!1s0x46f2c370a45fa97f:0x4e0669ca4cc36b8b!2m2!1d22.686534!2d59.0396789!1m5!1m1!1s0x46f2c5f0ae2a50fd:0x2a5a613b880abd96!2m2!1d22.6961064!2d59.0695407!1m5!1m1!1s0x46f2dbbf00b60211:0xd52901fff584c2d3!2m2!1d22.6275048!2d59.0775704!1m5!1m1!1s0x46f2db73815f7e4d:0x4ef242301f4b0f8b!2m2!1d22.586099!2d59.0912592!1m5!1m1!1s0x46f2c26ef638fe27:0xc2bcb9ff2c48ab37!2m2!1d22.6684591!2d58.9740893!1m5!1m1!1s0x46f2dd722815d287:0x23d7bb8c7864874b!2m2!1d22.4973724!2d59.0091119!1m5!1m1!1s0x46f2e9579a854a29:0xe96a0e315523d6ef!2m2!1d22.5566996!2d58.9624146!1m5!1m1!1s0x46f2e770fec67f9f:0x8c14dec1e00d259e!2m2!1d22.4563999!2d58.9824!1m5!1m1!1s0x46f2c370a45fa97f:0x4e0669ca4cc36b8b!2m2!1d22.686534!2d59.0396789!3e0?entry=ttu&amp;g_ep=EgoyMDI2MDYyOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener">Ava Google Maps</a>
+      </div>
+    </section>
+
+    <!-- Päev 4 -->
+    <section class="day">
+      <div class="day-header">
+        <h2>Päev 4</h2>
+        <div class="day-stats">
+          <span class="stat"><strong>60</strong> km</span>
+          <span class="stat"><strong>1</strong> h</span>
+        </div>
+      </div>
+      <div class="day-body">
+        <ul class="route-list">
+          <li>RMK Tõrvanina telkimisala, Tareste küla, 92350</li>
+          <li>Kõpu Tuletorn, Kõpu Lighthouse, Mägipe, 92233</li>
+          <li>Surf Paradiis, Kalana, 92230</li>
+          <li>RMK Kaleste telkimisala, Kaleste, 92232</li>
+        </ul>
+        <a class="maps-link" href="https://www.google.com/maps/dir/RMK+T%C3%B5rvanina+telkimisala,+Tareste+k%C3%BCla,+92350+Hiiu+maakond/K%C3%B5pu+Tuletorn,+K%C3%B5pu+Lighthouse,+M%C3%A4gipe,+92233+Hiiu+maakond/Surf+Paradiis,+Kalana,+92230+Hiiu+maakond/RMK+Kaleste+telkimisala,+Kaleste,+92232+Hiiu+maakond/@58.9132875,22.1040139,11.22z/data=!4m26!4m25!1m5!1m1!1s0x46f2c370a45fa97f:0x4e0669ca4cc36b8b!2m2!1d22.686534!2d59.0396789!1m5!1m1!1s0x46f2e3b48d3f2695:0x264c602ad67baf37!2m2!1d22.1996427!2d58.9159953!1m5!1m1!1s0x46f31c67f706f075:0x3a2d2910392db6d!2m2!1d22.049809!2d58.9394802!1m5!1m1!1s0x46f31d7f274e84af:0xa41450fd91ac5df1!2m2!1d22.1332999!2d58.9077!3e0?entry=ttu&amp;g_ep=EgoyMDI2MDYyOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener">Ava Google Maps</a>
+      </div>
+    </section>
+
+    <!-- Päev 5 -->
+    <section class="day">
+      <div class="day-header">
+        <h2>Päev 5</h2>
+      </div>
+      <div class="day-body">
+        <p class="note">Rannapäev – puhkepäev, sõitmata</p>
+      </div>
+    </section>
+
+    <!-- Päev 6 -->
+    <section class="day">
+      <div class="day-header">
+        <h2>Päev 6</h2>
+        <div class="day-stats">
+          <span class="stat"><strong>260</strong> km</span>
+          <span class="stat"><strong>3,5</strong> h</span>
+        </div>
+      </div>
+      <div class="day-body">
+        <ul class="route-list">
+          <li>RMK Kaleste telkimisala, Kaleste, 92232</li>
+          <li>
+            Heltermaa sadam, Heltermaa, 92312
+            <span class="leg-stats">70 km · 1 h</span>
+          </li>
+          <li>
+            Rohukülast koju
+            <span class="leg-stats">190 km · 2,5 h</span>
+          </li>
+        </ul>
+        <a class="maps-link" href="https://www.google.com/maps/dir/RMK+Kaleste+telkimisala,+Kaleste,+92232+Hiiu+maakond/Heltermaa+sadam,+Heltermaa,+92312+Hiiu+maakond/@58.759883,22.3191973,10z/data=!4m14!4m13!1m5!1m1!1s0x46f31d7f274e84af:0xa41450fd91ac5df1!2m2!1d22.1332999!2d58.9077!1m5!1m1!1s0x46f2963659b09ccf:0xc52888e6b9201fa5!2m2!1d23.0472654!2d58.8662383!3e0?entry=ttu&amp;g_ep=EgoyMDI2MDYyOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener">Ava Google Maps</a>
+
+  <footer>
+    Hiiumaa · 2026
+  </footer>
+
+</body>
+</html>
