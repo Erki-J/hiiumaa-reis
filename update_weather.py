@@ -164,11 +164,26 @@ def weather_block(w):
     src = "yr.no" if w["source"] == "yr.no" else "open-meteo.com"
     return (
         f'        <div class="day-weather">\n'
-        f'          <span class="weather-place">{w["place"]}</span>\n'
         f'          <div class="weather-row">{slots}</div>\n'
         f'          <div class="weather-temp"><strong>{w["max"]}°</strong> / {w["min"]}°</div>\n'
         f'          <span class="weather-src">{src}</span>\n'
         f"        </div>\n"
+    )
+
+
+def insert_weather(header_inner, block):
+    if re.search(r'<div class="day-stats">', header_inner):
+        return re.sub(
+            r'(<div class="day-title">[\s\S]*?</div>\n)(\s*<div class="day-stats">)',
+            r"\1" + block + r"\2",
+            header_inner,
+            count=1,
+        )
+    return re.sub(
+        r'(<div class="day-title">[\s\S]*?</div>\n)(\s*</div>)',
+        r"\1" + block + r"\2",
+        header_inner,
+        count=1,
     )
 
 
@@ -311,7 +326,7 @@ def patch_html(path, weather):
                 )
 
         header_inner = strip_weather(header_inner)
-        header_inner = header_inner.rstrip() + "\n" + block
+        header_inner = insert_weather(header_inner, block)
         html = html[: match.start(2)] + header_inner + html[match.end(2) :]
 
     path.write_text(html, encoding="utf-8")
