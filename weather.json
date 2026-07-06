@@ -1,0 +1,56 @@
+{
+  "1": {
+    "max": 22,
+    "min": 18,
+    "morning": "partly",
+    "noon": "partly",
+    "evening": "cloudy",
+    "source": "yr.no",
+    "place": "S\u00e4\u00e4retirp"
+  },
+  "2": {
+    "max": 16,
+    "min": 14,
+    "morning": "sun",
+    "noon": "partly",
+    "evening": "partly",
+    "source": "open-meteo",
+    "place": "T\u00f5rvanina"
+  },
+  "3": {
+    "max": 17,
+    "min": 14,
+    "morning": "partly",
+    "noon": "cloudy",
+    "evening": "partly",
+    "source": "open-meteo",
+    "place": "T\u00f5rvanina"
+  },
+  "4": {
+    "max": 20,
+    "min": 12,
+    "morning": "sun",
+    "noon": "partly",
+    "evening": "partly",
+    "source": "open-meteo",
+    "place": "T\u00f5rvanina"
+  },
+  "5": {
+    "max": 23,
+    "min": 14,
+    "morning": "sun",
+    "noon": "partly",
+    "evening": "partly",
+    "source": "open-meteo",
+    "place": "Kaleste"
+  },
+  "6": {
+    "max": 20,
+    "min": 15,
+    "morning": "partly",
+    "noon": "sun",
+    "evening": "cloudy",
+    "source": "open-meteo",
+    "place": "Kaleste"
+  }
+}
