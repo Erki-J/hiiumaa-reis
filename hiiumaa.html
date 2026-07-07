@@ -159,9 +159,30 @@
       font-weight: 700;
     }
 
-    .weather-src {
+    .weather-refresh {
       font-size: 0.6rem;
       color: var(--muted);
+      background: none;
+      border: none;
+      padding: 0;
+      margin-left: auto;
+      cursor: pointer;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      font-family: inherit;
+    }
+
+    .weather-refresh:hover {
+      color: var(--sea);
+    }
+
+    .weather-refresh:disabled {
+      opacity: 0.6;
+      cursor: wait;
+    }
+
+    .day-weather.is-updating {
+      opacity: 0.7;
     }
 
     .day-stats {
@@ -592,11 +613,11 @@
           <div class="day-title">
           <h2>Päev 1 <span class="day-date">16.07</span></h2>
           <span class="day-start">Start 7:00 / 8:30 / 10:00 (Viljandist)</span>
-        </div>
-        <div class="day-weather">
-          <div class="weather-row"><div class="weather-slot"><svg class="wicon" viewBox="0 0 32 32" aria-hidden="true"><circle cx="12" cy="13" r="6" fill="#fbbf24"/><path d="M10 22h14a6 6 0 0 0 .4-12 7.5 7.5 0 0 0-14.6 1.8A4.5 4.5 0 0 0 10 22z" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1"/></svg><span class="weather-label">Hommik</span></div><div class="weather-slot"><svg class="wicon" viewBox="0 0 32 32" aria-hidden="true"><circle cx="12" cy="13" r="6" fill="#fbbf24"/><path d="M10 22h14a6 6 0 0 0 .4-12 7.5 7.5 0 0 0-14.6 1.8A4.5 4.5 0 0 0 10 22z" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1"/></svg><span class="weather-label">Lõuna</span></div><div class="weather-slot"><svg class="wicon" viewBox="0 0 32 32" aria-hidden="true"><path d="M17 7a9 9 0 1 0 7 12.5A7 7 0 0 1 17 7z" fill="#94a3b8"/><path d="M20 20h8a4 4 0 0 0 .2-8 5 5 0 0 0-9.5 1.2A3 3 0 0 0 20 20z" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1"/></svg><span class="weather-label">Õhtu</span></div></div>
+        </div><div class="weather-slot"><svg class="wicon" viewBox="0 0 32 32" aria-hidden="true"><circle cx="12" cy="13" r="6" fill="#fbbf24"/><path d="M10 22h14a6 6 0 0 0 .4-12 7.5 7.5 0 0 0-14.6 1.8A4.5 4.5 0 0 0 10 22z" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1"/></svg><span class="weather-label">Lõuna</span></div><div class="weather-slot"><svg class="wicon" viewBox="0 0 32 32" aria-hidden="true"><path d="M17 7a9 9 0 1 0 7 12.5A7 7 0 0 1 17 7z" fill="#94a3b8"/><path d="M20 20h8a4 4 0 0 0 .2-8 5 5 0 0 0-9.5 1.2A3 3 0 0 0 20 20z" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1"/></svg><span class="weather-label">Õhtu</span></div></div>
+        <div class="day-weather" data-day="1">
+          <div class="weather-row"><div class="weather-slot"><svg class="wicon" viewBox="0 0 32 32" aria-hidden="true"><circle cx="12" cy="13" r="6" fill="#fbbf24"/><path d="M10 22h14a6 6 0 0 0 .4-12 7.5 7.5 0 0 0-14.6 1.8A4.5 4.5 0 0 0 10 22z" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1"/></svg><span class="weather-label">Hommik</span></div><div class="weather-slot"><svg class="wicon" viewBox="0 0 32 32" aria-hidden="true"><circle cx="12" cy="13" r="6" fill="#fbbf24"/><path d="M10 22h14a6 6 0 0 0 .4-12 7.5 7.5 0 0 0-14.6 1.8A4.5 4.5 0 0 0 10 22z" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1"/></svg><span class="weather-label">Lõuna</span></div><div class="weather-slot"><svg class="wicon" viewBox="0 0 32 32" aria-hidden="true"><path d="M18 6a10 10 0 1 0 8 14.5A8 8 0 0 1 18 6z" fill="#94a3b8"/></svg><span class="weather-label">Õhtu</span></div></div>
           <div class="weather-temp"><strong>22°</strong> / 18°</div>
-          <span class="weather-src">yr.no</span>
+          <button type="button" class="weather-refresh" title="Uuenda ilma kõigil päevadel">yr.no</button>
         </div>
                   <div class="day-stats">
           <span class="stat"><strong>260</strong> km</span>
@@ -640,11 +661,11 @@
                 <div class="day-header-top">
           <div class="day-title">
           <h2>Päev 2 <span class="day-date">17.07</span></h2>
-        </div>
-        <div class="day-weather">
-          <div class="weather-row"><div class="weather-slot"><svg class="wicon" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="7" fill="#fbbf24"/><g stroke="#fbbf24" stroke-width="2" stroke-linecap="round"><line x1="16" y1="3" x2="16" y2="7"/><line x1="16" y1="25" x2="16" y2="29"/><line x1="3" y1="16" x2="7" y2="16"/><line x1="25" y1="16" x2="29" y2="16"/><line x1="6.8" y1="6.8" x2="9.6" y2="9.6"/><line x1="22.4" y1="22.4" x2="25.2" y2="25.2"/><line x1="6.8" y1="25.2" x2="9.6" y2="22.4"/><line x1="22.4" y1="9.6" x2="25.2" y2="6.8"/></g></svg><span class="weather-label">Hommik</span></div><div class="weather-slot"><svg class="wicon" viewBox="0 0 32 32" aria-hidden="true"><circle cx="12" cy="13" r="6" fill="#fbbf24"/><path d="M10 22h14a6 6 0 0 0 .4-12 7.5 7.5 0 0 0-14.6 1.8A4.5 4.5 0 0 0 10 22z" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1"/></svg><span class="weather-label">Lõuna</span></div><div class="weather-slot"><svg class="wicon" viewBox="0 0 32 32" aria-hidden="true"><path d="M17 7a9 9 0 1 0 7 12.5A7 7 0 0 1 17 7z" fill="#94a3b8"/><path d="M20 20h8a4 4 0 0 0 .2-8 5 5 0 0 0-9.5 1.2A3 3 0 0 0 20 20z" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1"/></svg><span class="weather-label">Õhtu</span></div></div>
-          <div class="weather-temp"><strong>16°</strong> / 14°</div>
-          <span class="weather-src">open-meteo.com</span>
+        </div><div class="weather-slot"><svg class="wicon" viewBox="0 0 32 32" aria-hidden="true"><circle cx="12" cy="13" r="6" fill="#fbbf24"/><path d="M10 22h14a6 6 0 0 0 .4-12 7.5 7.5 0 0 0-14.6 1.8A4.5 4.5 0 0 0 10 22z" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1"/></svg><span class="weather-label">Lõuna</span></div><div class="weather-slot"><svg class="wicon" viewBox="0 0 32 32" aria-hidden="true"><path d="M17 7a9 9 0 1 0 7 12.5A7 7 0 0 1 17 7z" fill="#94a3b8"/><path d="M20 20h8a4 4 0 0 0 .2-8 5 5 0 0 0-9.5 1.2A3 3 0 0 0 20 20z" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1"/></svg><span class="weather-label">Õhtu</span></div></div>
+        <div class="day-weather" data-day="2">
+          <div class="weather-row"><div class="weather-slot"><svg class="wicon" viewBox="0 0 32 32" aria-hidden="true"><path d="M9 22h15a5.5 5.5 0 0 0 .5-11 6.5 6.5 0 0 0-12.6 1.6A4 4 0 0 0 9 22z" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1"/></svg><span class="weather-label">Hommik</span></div><div class="weather-slot"><svg class="wicon" viewBox="0 0 32 32" aria-hidden="true"><path d="M9 22h15a5.5 5.5 0 0 0 .5-11 6.5 6.5 0 0 0-12.6 1.6A4 4 0 0 0 9 22z" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1"/></svg><span class="weather-label">Lõuna</span></div><div class="weather-slot"><svg class="wicon" viewBox="0 0 32 32" aria-hidden="true"><path d="M17 7a9 9 0 1 0 7 12.5A7 7 0 0 1 17 7z" fill="#94a3b8"/><path d="M20 20h8a4 4 0 0 0 .2-8 5 5 0 0 0-9.5 1.2A3 3 0 0 0 20 20z" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1"/></svg><span class="weather-label">Õhtu</span></div></div>
+          <div class="weather-temp"><strong>20°</strong> / 18°</div>
+          <button type="button" class="weather-refresh" title="Uuenda ilma kõigil päevadel">yr.no</button>
         </div>
                   <div class="day-stats">
           <span class="stat"><strong>20</strong> km</span>
@@ -669,11 +690,11 @@
                 <div class="day-header-top">
           <div class="day-title">
           <h2>Päev 3 <span class="day-date">18.07</span></h2>
-        </div>
-        <div class="day-weather">
+        </div><div class="weather-slot"><svg class="wicon" viewBox="0 0 32 32" aria-hidden="true"><path d="M9 22h15a5.5 5.5 0 0 0 .5-11 6.5 6.5 0 0 0-12.6 1.6A4 4 0 0 0 9 22z" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1"/></svg><span class="weather-label">Lõuna</span></div><div class="weather-slot"><svg class="wicon" viewBox="0 0 32 32" aria-hidden="true"><path d="M17 7a9 9 0 1 0 7 12.5A7 7 0 0 1 17 7z" fill="#94a3b8"/><path d="M20 20h8a4 4 0 0 0 .2-8 5 5 0 0 0-9.5 1.2A3 3 0 0 0 20 20z" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1"/></svg><span class="weather-label">Õhtu</span></div></div>
+        <div class="day-weather" data-day="3">
           <div class="weather-row"><div class="weather-slot"><svg class="wicon" viewBox="0 0 32 32" aria-hidden="true"><circle cx="12" cy="13" r="6" fill="#fbbf24"/><path d="M10 22h14a6 6 0 0 0 .4-12 7.5 7.5 0 0 0-14.6 1.8A4.5 4.5 0 0 0 10 22z" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1"/></svg><span class="weather-label">Hommik</span></div><div class="weather-slot"><svg class="wicon" viewBox="0 0 32 32" aria-hidden="true"><path d="M9 22h15a5.5 5.5 0 0 0 .5-11 6.5 6.5 0 0 0-12.6 1.6A4 4 0 0 0 9 22z" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1"/></svg><span class="weather-label">Lõuna</span></div><div class="weather-slot"><svg class="wicon" viewBox="0 0 32 32" aria-hidden="true"><path d="M17 7a9 9 0 1 0 7 12.5A7 7 0 0 1 17 7z" fill="#94a3b8"/><path d="M20 20h8a4 4 0 0 0 .2-8 5 5 0 0 0-9.5 1.2A3 3 0 0 0 20 20z" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1"/></svg><span class="weather-label">Õhtu</span></div></div>
           <div class="weather-temp"><strong>17°</strong> / 14°</div>
-          <span class="weather-src">open-meteo.com</span>
+          <button type="button" class="weather-refresh" title="Uuenda ilma kõigil päevadel">open-meteo.com</button>
         </div>
                   <div class="day-stats">
           <span class="stat"><strong>100</strong> km</span>
@@ -706,11 +727,11 @@
                 <div class="day-header-top">
           <div class="day-title">
           <h2>Päev 4 <span class="day-date">19.07</span></h2>
-        </div>
-        <div class="day-weather">
+        </div><div class="weather-slot"><svg class="wicon" viewBox="0 0 32 32" aria-hidden="true"><circle cx="12" cy="13" r="6" fill="#fbbf24"/><path d="M10 22h14a6 6 0 0 0 .4-12 7.5 7.5 0 0 0-14.6 1.8A4.5 4.5 0 0 0 10 22z" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1"/></svg><span class="weather-label">Lõuna</span></div><div class="weather-slot"><svg class="wicon" viewBox="0 0 32 32" aria-hidden="true"><path d="M17 7a9 9 0 1 0 7 12.5A7 7 0 0 1 17 7z" fill="#94a3b8"/><path d="M20 20h8a4 4 0 0 0 .2-8 5 5 0 0 0-9.5 1.2A3 3 0 0 0 20 20z" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1"/></svg><span class="weather-label">Õhtu</span></div></div>
+        <div class="day-weather" data-day="4">
           <div class="weather-row"><div class="weather-slot"><svg class="wicon" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="7" fill="#fbbf24"/><g stroke="#fbbf24" stroke-width="2" stroke-linecap="round"><line x1="16" y1="3" x2="16" y2="7"/><line x1="16" y1="25" x2="16" y2="29"/><line x1="3" y1="16" x2="7" y2="16"/><line x1="25" y1="16" x2="29" y2="16"/><line x1="6.8" y1="6.8" x2="9.6" y2="9.6"/><line x1="22.4" y1="22.4" x2="25.2" y2="25.2"/><line x1="6.8" y1="25.2" x2="9.6" y2="22.4"/><line x1="22.4" y1="9.6" x2="25.2" y2="6.8"/></g></svg><span class="weather-label">Hommik</span></div><div class="weather-slot"><svg class="wicon" viewBox="0 0 32 32" aria-hidden="true"><circle cx="12" cy="13" r="6" fill="#fbbf24"/><path d="M10 22h14a6 6 0 0 0 .4-12 7.5 7.5 0 0 0-14.6 1.8A4.5 4.5 0 0 0 10 22z" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1"/></svg><span class="weather-label">Lõuna</span></div><div class="weather-slot"><svg class="wicon" viewBox="0 0 32 32" aria-hidden="true"><path d="M17 7a9 9 0 1 0 7 12.5A7 7 0 0 1 17 7z" fill="#94a3b8"/><path d="M20 20h8a4 4 0 0 0 .2-8 5 5 0 0 0-9.5 1.2A3 3 0 0 0 20 20z" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1"/></svg><span class="weather-label">Õhtu</span></div></div>
           <div class="weather-temp"><strong>20°</strong> / 12°</div>
-          <span class="weather-src">open-meteo.com</span>
+          <button type="button" class="weather-refresh" title="Uuenda ilma kõigil päevadel">open-meteo.com</button>
         </div>
                   <div class="day-stats">
           <span class="stat"><strong>60</strong> km</span>
@@ -738,11 +759,11 @@
                 <div class="day-header-top">
           <div class="day-title">
           <h2>Päev 5 <span class="day-date">20.07</span></h2>
-        </div>
-        <div class="day-weather">
+        </div><div class="weather-slot"><svg class="wicon" viewBox="0 0 32 32" aria-hidden="true"><circle cx="12" cy="13" r="6" fill="#fbbf24"/><path d="M10 22h14a6 6 0 0 0 .4-12 7.5 7.5 0 0 0-14.6 1.8A4.5 4.5 0 0 0 10 22z" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1"/></svg><span class="weather-label">Lõuna</span></div><div class="weather-slot"><svg class="wicon" viewBox="0 0 32 32" aria-hidden="true"><path d="M17 7a9 9 0 1 0 7 12.5A7 7 0 0 1 17 7z" fill="#94a3b8"/><path d="M20 20h8a4 4 0 0 0 .2-8 5 5 0 0 0-9.5 1.2A3 3 0 0 0 20 20z" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1"/></svg><span class="weather-label">Õhtu</span></div></div>
+        <div class="day-weather" data-day="5">
           <div class="weather-row"><div class="weather-slot"><svg class="wicon" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="7" fill="#fbbf24"/><g stroke="#fbbf24" stroke-width="2" stroke-linecap="round"><line x1="16" y1="3" x2="16" y2="7"/><line x1="16" y1="25" x2="16" y2="29"/><line x1="3" y1="16" x2="7" y2="16"/><line x1="25" y1="16" x2="29" y2="16"/><line x1="6.8" y1="6.8" x2="9.6" y2="9.6"/><line x1="22.4" y1="22.4" x2="25.2" y2="25.2"/><line x1="6.8" y1="25.2" x2="9.6" y2="22.4"/><line x1="22.4" y1="9.6" x2="25.2" y2="6.8"/></g></svg><span class="weather-label">Hommik</span></div><div class="weather-slot"><svg class="wicon" viewBox="0 0 32 32" aria-hidden="true"><circle cx="12" cy="13" r="6" fill="#fbbf24"/><path d="M10 22h14a6 6 0 0 0 .4-12 7.5 7.5 0 0 0-14.6 1.8A4.5 4.5 0 0 0 10 22z" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1"/></svg><span class="weather-label">Lõuna</span></div><div class="weather-slot"><svg class="wicon" viewBox="0 0 32 32" aria-hidden="true"><path d="M17 7a9 9 0 1 0 7 12.5A7 7 0 0 1 17 7z" fill="#94a3b8"/><path d="M20 20h8a4 4 0 0 0 .2-8 5 5 0 0 0-9.5 1.2A3 3 0 0 0 20 20z" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1"/></svg><span class="weather-label">Õhtu</span></div></div>
           <div class="weather-temp"><strong>23°</strong> / 14°</div>
-          <span class="weather-src">open-meteo.com</span>
+          <button type="button" class="weather-refresh" title="Uuenda ilma kõigil päevadel">open-meteo.com</button>
         </div>
         </div>
       </div>
@@ -762,11 +783,11 @@
           <div class="day-title">
           <h2>Päev 6 <span class="day-date">21.07</span></h2>
           <span class="day-start">Start 10:00 / 11:30 / 13:00</span>
-        </div>
-        <div class="day-weather">
+        </div><div class="weather-slot"><svg class="wicon" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="7" fill="#fbbf24"/><g stroke="#fbbf24" stroke-width="2" stroke-linecap="round"><line x1="16" y1="3" x2="16" y2="7"/><line x1="16" y1="25" x2="16" y2="29"/><line x1="3" y1="16" x2="7" y2="16"/><line x1="25" y1="16" x2="29" y2="16"/><line x1="6.8" y1="6.8" x2="9.6" y2="9.6"/><line x1="22.4" y1="22.4" x2="25.2" y2="25.2"/><line x1="6.8" y1="25.2" x2="9.6" y2="22.4"/><line x1="22.4" y1="9.6" x2="25.2" y2="6.8"/></g></svg><span class="weather-label">Lõuna</span></div><div class="weather-slot"><svg class="wicon" viewBox="0 0 32 32" aria-hidden="true"><path d="M17 7a9 9 0 1 0 7 12.5A7 7 0 0 1 17 7z" fill="#94a3b8"/><path d="M20 20h8a4 4 0 0 0 .2-8 5 5 0 0 0-9.5 1.2A3 3 0 0 0 20 20z" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1"/></svg><span class="weather-label">Õhtu</span></div></div>
+        <div class="day-weather" data-day="6">
           <div class="weather-row"><div class="weather-slot"><svg class="wicon" viewBox="0 0 32 32" aria-hidden="true"><circle cx="12" cy="13" r="6" fill="#fbbf24"/><path d="M10 22h14a6 6 0 0 0 .4-12 7.5 7.5 0 0 0-14.6 1.8A4.5 4.5 0 0 0 10 22z" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1"/></svg><span class="weather-label">Hommik</span></div><div class="weather-slot"><svg class="wicon" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="7" fill="#fbbf24"/><g stroke="#fbbf24" stroke-width="2" stroke-linecap="round"><line x1="16" y1="3" x2="16" y2="7"/><line x1="16" y1="25" x2="16" y2="29"/><line x1="3" y1="16" x2="7" y2="16"/><line x1="25" y1="16" x2="29" y2="16"/><line x1="6.8" y1="6.8" x2="9.6" y2="9.6"/><line x1="22.4" y1="22.4" x2="25.2" y2="25.2"/><line x1="6.8" y1="25.2" x2="9.6" y2="22.4"/><line x1="22.4" y1="9.6" x2="25.2" y2="6.8"/></g></svg><span class="weather-label">Lõuna</span></div><div class="weather-slot"><svg class="wicon" viewBox="0 0 32 32" aria-hidden="true"><path d="M17 7a9 9 0 1 0 7 12.5A7 7 0 0 1 17 7z" fill="#94a3b8"/><path d="M20 20h8a4 4 0 0 0 .2-8 5 5 0 0 0-9.5 1.2A3 3 0 0 0 20 20z" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1"/></svg><span class="weather-label">Õhtu</span></div></div>
           <div class="weather-temp"><strong>20°</strong> / 15°</div>
-          <span class="weather-src">open-meteo.com</span>
+          <button type="button" class="weather-refresh" title="Uuenda ilma kõigil päevadel">open-meteo.com</button>
         </div>
                   <div class="day-stats">
           <span class="stat"><strong>260</strong> km</span>
@@ -915,9 +936,10 @@
   <footer>
     Hiiumaa · 2026
     <p>Hinnad on orientiiriks — enne külastust tasub need kohapeal üle kontrollida.</p>
-    <p>Ilmaennustus on orientiiriks (yr.no / open-meteo.com) — enne reisi tasub üle kontrollida.</p>
+    <p>Ilmaennustus on orientiiriks (yr.no / open-meteo.com) — kliki päeva ilma allikale, et uuendada. Enne reisi tasub üle kontrollida.</p>
   </footer>
 
+  <script src="weather.js"></script>
   <script>
     document.querySelectorAll('.tab-btn').forEach(function (btn) {
       btn.addEventListener('click', function () {

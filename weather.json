@@ -4,17 +4,17 @@
     "min": 18,
     "morning": "partly",
     "noon": "partly",
-    "evening": "cloudy",
+    "evening": "sun",
     "source": "yr.no",
     "place": "S\u00e4\u00e4retirp"
   },
   "2": {
-    "max": 16,
-    "min": 14,
-    "morning": "sun",
-    "noon": "partly",
-    "evening": "partly",
-    "source": "open-meteo",
+    "max": 20,
+    "min": 18,
+    "morning": "cloudy",
+    "noon": "cloudy",
+    "evening": "cloudy",
+    "source": "yr.no",
     "place": "T\u00f5rvanina"
   },
   "3": {

@@ -155,7 +155,7 @@ def fetch_weather():
     return result
 
 
-def weather_block(w):
+def weather_block(day, w):
     labels = [("morning", "Hommik"), ("noon", "Lõuna"), ("evening", "Õhtu")]
     slots = "".join(
         f'<div class="weather-slot">{icon_html(w[p], p)}<span class="weather-label">{label}</span></div>'
@@ -163,10 +163,10 @@ def weather_block(w):
     )
     src = "yr.no" if w["source"] == "yr.no" else "open-meteo.com"
     return (
-        f'        <div class="day-weather">\n'
+        f'        <div class="day-weather" data-day="{day}">\n'
         f'          <div class="weather-row">{slots}</div>\n'
         f'          <div class="weather-temp"><strong>{w["max"]}°</strong> / {w["min"]}°</div>\n'
-        f'          <span class="weather-src">{src}</span>\n'
+        f'          <button type="button" class="weather-refresh" title="Uuenda ilma kõigil päevadel">{src}</button>\n'
         f"        </div>\n"
     )
 
@@ -274,7 +274,7 @@ WEATHER_CSS = """
 def strip_weather(header_inner):
     while True:
         new = re.sub(
-            r'\s*<div class="day-weather">[\s\S]*?<span class="weather-src">[^<]*</span>\s*</div>',
+            r'\s*<div class="day-weather"[^>]*>[\s\S]*?(?:</span>|</button>)\s*</div>',
             "",
             header_inner,
             count=1,
@@ -283,7 +283,7 @@ def strip_weather(header_inner):
             break
         header_inner = new
     return re.sub(
-        r'\s*<div class="weather-temp">.*?</div>\s*<span class="weather-src">[^<]*</span>\s*</div>',
+        r'\s*<div class="weather-temp">.*?</div>\s*(?:<span class="weather-src">[^<]*</span>|<button type="button" class="weather-refresh"[^>]*>[^<]*</button>)\s*</div>',
         "",
         header_inner,
         flags=re.DOTALL,
@@ -300,7 +300,7 @@ def patch_html(path, weather):
         )
 
     for day in range(1, 7):
-        block = weather_block(weather[day])
+        block = weather_block(day, weather[day])
         pattern = rf'(<!-- Päev {day} -->.*?<div class="day-header">\n)(.*?)(      </div>\n      <div class="day-body">)'
         match = re.search(pattern, html, re.DOTALL)
         if not match:
