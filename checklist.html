@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checklist – Hiiumaa reis</title>
+  <style>
+    :root {
+      --sea: #1a6b7c;
+      --sea-light: #e8f4f6;
+      --sand: #f5f0e8;
+      --text: #1e293b;
+      --muted: #64748b;
+      --border: #cbd5e1;
+      --accent: #0ea5e9;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      background: linear-gradient(180deg, var(--sea-light) 0%, var(--sand) 100%);
+      color: var(--text);
+      line-height: 1.5;
+      min-height: 100vh;
+    }
+
+    header {
+      background: var(--sea);
+      color: white;
+      padding: 2rem 1.5rem;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0 0 0.5rem;
+      font-size: 1.75rem;
+      font-weight: 700;
+    }
+
+    header a {
+      color: inherit;
+      opacity: 0.9;
+      font-size: 0.95rem;
+    }
+
+    header a:hover { opacity: 1; }
+
+    main {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 1.5rem 1rem 3rem;
+    }
+
+    .check-section {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+      margin-bottom: 1.25rem;
+      overflow: hidden;
+    }
+
+    .check-section h2 {
+      margin: 0;
+      padding: 0.85rem 1.25rem;
+      background: var(--sea-light);
+      color: var(--sea);
+      font-size: 1.1rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .check-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+    }
+
+    .check-grid.cols-2 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .check-col {
+      padding: 0.75rem 1rem;
+      border-right: 1px solid var(--border);
+    }
+
+    .check-col:last-child { border-right: none; }
+
+    .check-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      padding: 0.3rem 0;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+
+    .check-item input {
+      flex-shrink: 0;
+      width: 1.1rem;
+      height: 1.1rem;
+      margin-top: 0.15rem;
+      accent-color: var(--sea);
+      cursor: pointer;
+    }
+
+    .check-item.checked span {
+      text-decoration: line-through;
+      color: var(--muted);
+    }
+
+    footer {
+      text-align: center;
+      padding: 0 1rem 2rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    @media (max-width: 720px) {
+      .check-grid,
+      .check-grid.cols-2 {
+        grid-template-columns: 1fr;
+      }
+
+      .check-col {
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .check-col:last-child { border-bottom: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Checklist</h1>
+    <a href="index.html">← Tagasi Hiiumaa reisiplaani</a>
+  </header>
+
+  <main>
+
+    <section class="check-section">
+      <h2>Kodust</h2>
+      <div class="check-grid" id="kodust"></div>
+    </section>
+
+    <section class="check-section">
+      <h2>Poest</h2>
+      <div class="check-grid cols-2" id="poest"></div>
+    </section>
+
+  </main>
+
+  <footer>Hiiumaa · 2026</footer>
+
+  <script>
+    var STORAGE_KEY = "hiiumaa-checklist-v1";
+
+    var kodust = [
+      ["Padjad 7tk", "Lina 2tk", null, "Telk 2tk", "Magamiskotid 3tk", "Madrats 3tk", "Madratsipump", null, "Koormakate 3tk", "Koormarihm", "Kinnituskummid", null, "Šašlõkivardad", "Külmakast 2tk", "Matkapliit", "Gaas", "Puud", "Tikud", "Paber", null, "Akupank 2tk", "Taskulamp 2tk", "Laadija – tel", "Raadio", "Akud 2tk", null, "Paber", "Pastakas", "Sofia kaisukad"],
+      ["Pott", "Pann", "Pannilabidas", "Tassid", "Lusikad", "Nuga", "Kahvel", "Topsid", "Taldrikud", "Kausid", "Termopott", "Joogipudel", "Õli", "Sool", "Suhkur", "Pipar", "Kohvi", "Tee", null, "Hambahari", "Hambapasta", "Higipulk", "WC paber", "Ujukad", "Vahetusriided", "Vihmariided", "Päikeseprillid", "Jalanõud", "Saunalinad"],
+      ["Liiva asjad", "Pall", "Päikesevari", "Lamamistool", "Matkatool – 3tk", "Labidas", "Rannatekk", "Alustekk", "Reha", null, "Mölkky", "Kaardid", "Uuno kaardid", "Lauamängud", "Doomino", "Karkassonne", "6 võtab", "Minecraft", null, "Ujumisrõngad", "SUP laud", "Päästevest"]
+    ];
+
+    var poest = [
+      ["Leib", "Sai", "Saiakesed", "Juustukukkel", "Kaerahelbed", "Pannkoogijahu", "Kiir puder", null, "Krõpsu", "Küpsis", "Maasikamoos", null, "Vett – 5L 1 päev", "Siirup", "Coca / Sprite", "Toonik", "Mustikavesi", "Jäätee", "Smuuti", null, "Õlu", "Siider", "Vein", "Rumm", "Gin", "Jää"],
+      ["Kartulisalat", "Makaronisalat", "Õli", "Friikartulid", "Supp", "Vegan sojapiim", "Veg majonees", "Ketsup", "Juust", "Sink / vorst", "Grillvorst", "Šašlõkk", "Kana nagitsad", null, "Oliivid", "Hapukurk", "Kurk", "Kirsstomat", "Lehtsalat", "Banaan"]
+    ];
+
+    function loadState() {
+      try {
+        return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
+      } catch (e) {
+        return {};
+      }
+    }
+
+    function saveState(state) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    }
+
+    function slug(text) {
+      return text.toLowerCase().replace(/[^a-z0-9äöüõ]+/gi, "-").replace(/^-|-$/g, "");
+    }
+
+    function renderSection(containerId, columns) {
+      var container = document.getElementById(containerId);
+      var state = loadState();
+
+      columns.forEach(function (items, colIdx) {
+        var col = document.createElement("div");
+        col.className = "check-col";
+
+        items.forEach(function (label) {
+          if (!label) {
+            var gap = document.createElement("div");
+            gap.style.height = "0.5rem";
+            col.appendChild(gap);
+            return;
+          }
+
+          var id = containerId + "-" + colIdx + "-" + slug(label);
+          var labelEl = document.createElement("label");
+          labelEl.className = "check-item" + (state[id] ? " checked" : "");
+          labelEl.innerHTML = '<input type="checkbox" id="' + id + '"' + (state[id] ? " checked" : "") + "><span>" + label + "</span>";
+
+          labelEl.querySelector("input").addEventListener("change", function (e) {
+            state[id] = e.target.checked;
+            saveState(state);
+            labelEl.classList.toggle("checked", e.target.checked);
+          });
+
+          col.appendChild(labelEl);
+        });
+
+        container.appendChild(col);
+      });
+    }
+
+    renderSection("kodust", kodust);
+    renderSection("poest", poest);
+  </script>
+
+</body>
+</html>
