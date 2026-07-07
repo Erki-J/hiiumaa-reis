@@ -274,7 +274,7 @@ WEATHER_CSS = """
 def strip_weather(header_inner):
     while True:
         new = re.sub(
-            r'\s*<div class="day-weather"[^>]*>[\s\S]*?(?:</span>|</button>)\s*</div>',
+            r'\s*<div class="day-weather"[^>]*>[\s\S]*?</button>\s*</div>',
             "",
             header_inner,
             count=1,
@@ -282,12 +282,37 @@ def strip_weather(header_inner):
         if new == header_inner:
             break
         header_inner = new
-    return re.sub(
-        r'\s*<div class="weather-temp">.*?</div>\s*(?:<span class="weather-src">[^<]*</span>|<button type="button" class="weather-refresh"[^>]*>[^<]*</button>)\s*</div>',
-        "",
-        header_inner,
-        flags=re.DOTALL,
-    )
+    while True:
+        new = re.sub(
+            r'\s*<div class="day-weather"[^>]*>[\s\S]*?<span class="weather-src">[^<]*</span>\s*</div>',
+            "",
+            header_inner,
+            count=1,
+        )
+        if new == header_inner:
+            break
+        header_inner = new
+    while True:
+        new = re.sub(
+            r'(<div class="day-title">[\s\S]*?</div>)(?:\s*<div class="weather-slot">[\s\S]*?</div>)+\s*</div>',
+            r"\1",
+            header_inner,
+            count=1,
+        )
+        if new == header_inner:
+            break
+        header_inner = new
+    while True:
+        new = re.sub(
+            r'(<div class="day-title">[\s\S]*?</div>)(?:\s*<div class="weather-slot">[\s\S]*?</div>)+',
+            r"\1",
+            header_inner,
+            count=1,
+        )
+        if new == header_inner:
+            break
+        header_inner = new
+    return header_inner
 
 
 def patch_html(path, weather):
