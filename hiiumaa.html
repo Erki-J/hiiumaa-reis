@@ -43,16 +43,27 @@
 
     .header-meta {
       display: flex;
-      flex-wrap: wrap;
+      flex-direction: column;
       align-items: center;
-      justify-content: center;
-      gap: 0.5rem 1.5rem;
+      gap: 0.35rem;
       margin: 0;
       opacity: 0.85;
       font-size: 0.95rem;
     }
 
-    .header-stats {
+    .header-meta-top {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem 1.5rem;
+    }
+
+    .header-meta-top p {
+      margin: 0;
+    }
+
+    .header-ticket {
       margin: 0;
       font-size: 0.95rem;
       opacity: 0.85;
@@ -521,9 +532,11 @@
   <header>
     <h1>Hiiumaa reisiplaan</h1>
     <div class="header-meta">
-      <p>6 päeva · telkimine &amp; avastamine</p>
-      <p class="header-stats"><strong>Km kokku:</strong> 700 · <strong>sõiduaeg kokku:</strong> 10,25 h · <strong>piletid ca</strong> 116 €</p>
-      <p class="header-stats"><a href="https://hiiumaamuuseum.ee/yhispilet/" target="_blank" rel="noopener">Hiiumaa 10 külastuskeskuse ühispilet</a> · Täis 30 € · Soodus 20 €</p>
+      <div class="header-meta-top">
+        <p>6 päeva · telkimine &amp; avastamine</p>
+        <p class="header-stats"><strong>Km kokku:</strong> 700 · <strong>sõiduaeg kokku:</strong> 10,25 h · <strong>piletid ca</strong> 116 €</p>
+      </div>
+      <p class="header-ticket"><a href="https://hiiumaamuuseum.ee/yhispilet/" target="_blank" rel="noopener">Hiiumaa 10 külastuskeskuse ühispilet</a> · Täis 30 € · Soodus 20 €</p>
     </div>
   </header>
 
