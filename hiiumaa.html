@@ -441,7 +441,7 @@
 
     .menu-meals li {
       display: flex;
-      align-items: baseline;
+      align-items: flex-start;
       gap: 1rem;
       padding: 0.55rem 1rem;
       border-top: 1px solid var(--border);
@@ -458,6 +458,8 @@
     }
 
     .menu-meals .meal-item {
+      flex: 1;
+      min-width: 0;
       color: var(--text);
     }
 
@@ -475,6 +477,31 @@
     .menu-meals .meal-item .maps-link {
       margin-top: 0.25rem;
       font-size: 0.8rem;
+    }
+
+    .meal-options {
+      margin: 0.35rem 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .meal-options li {
+      display: block;
+      padding: 0.35rem 0;
+      border-top: 1px solid var(--border);
+      border-left: none;
+      margin-left: 0;
+    }
+
+    .meal-options li:first-child {
+      border-top: none;
+      padding-top: 0;
+    }
+
+    .meal-options .maps-link {
+      display: inline;
+      margin-top: 0;
+      margin-left: 0.25rem;
     }
   </style>
 </head>
@@ -782,7 +809,7 @@
               <h3>Päev 2 · 17.07</h3>
               <ul class="menu-meals">
                 <li><span class="meal-label">Hommik</span><span class="meal-item">Puder / muna / pannkoogid</span></li>
-                <li><span class="meal-label">Lõuna</span><span class="meal-item">Välajas / supp<span class="price">60 €</span></span></li>
+                <li><span class="meal-label">Lõuna</span><span class="meal-item"><span class="price">60 €</span><ul class="meal-options"><li><a href="https://www.facebook.com/photo/?fbid=1555366113269744&amp;set=pb.100063891107496.-2207520000&amp;locale=et_EE" target="_blank" rel="noopener">Ambrosia Kreeka Kohvik &amp; Grill</a> · <a class="maps-link" href="https://www.google.com/maps/place/Ambrosia+Kreeka+Kohvik+%26+Grill/@58.9892939,22.6831833,11.61z/data=!4m6!3m5!1s0x46f2c3007f7edaed:0xf7b75fa4686372e8!8m2!3d59.0028972!4d22.7499224!16s%2Fg%2F11ldvysxbw?entry=ttu&amp;g_ep=EgoyMDI2MDYyOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener">Maps</a></li><li><a href="https://www.facebook.com/photo/?fbid=961235103639787&amp;set=pb.100092599194261.-2207520000" target="_blank" rel="noopener">Hiiumaa Pruulikoja Resto</a> · <a class="maps-link" href="https://www.google.com/maps/place/Hiiumaa+Pruulikoja+Resto/@58.99951,22.7400597,17z/data=!3m1!4b1!4m6!3m5!1s0x46f2c3dc427f2b8d:0x4fe68305073671b5!8m2!3d58.99951!4d22.74264!16s%2Fg%2F11sv8qjdb_?entry=ttu&amp;g_ep=EgoyMDI2MDYyOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener">Maps</a></li><li>Ascard Grill – Kärdla burks · <a class="maps-link" href="https://www.google.com/maps/place/Ascard+Grill+-+K%C3%A4rdla+burks/@59.0086477,22.7481801,17z/data=!3m1!4b1!4m6!3m5!1s0x46f2c378e77ac04d:0x6877830a468c7d22!8m2!3d59.0086477!4d22.7507604!16s%2Fg%2F11g4cdkr7t?entry=ttu&amp;g_ep=EgoyMDI2MDYyOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener">Maps</a></li><li>Peetri pizza · <a class="maps-link" href="https://www.google.com/maps/place/Peetri+Pizza/@58.9926193,22.7530437,15.24z/data=!4m10!1m2!2m1!1sPeetri+Pizza!3m6!1s0x46f2c1d95f0ed289:0x36251027a0d9fdfa!8m2!3d58.989574!4d22.7641261!15sCgxQZWV0cmkgUGl6emEiA4gBAVoOIgxwZWV0cmkgcGl6emGSARBwaXp6YV9yZXN0YXVyYW50mgEjQ6HZRFNVaE5NRzluUzBWSlEwRm5TVVJxYUdWMlVFbG5FQUXgAQD6AQQIABAV!16s%2Fg%2F11t7vc2vy6?entry=ttu&amp;g_ep=EgoyMDI2MDYyOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener">Maps</a></li></ul></span></li>
                 <li><span class="meal-label">Õhtu</span><span class="meal-item">Grillime</span></li>
               </ul>
             </div>
