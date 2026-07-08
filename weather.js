@@ -26,6 +26,7 @@
   ];
 
   var updating = false;
+  var CACHE_KEY = "hiiumaa_weather_cache_v1";
 
   function iconHtml(kind, period) {
     if (period === "evening") {
@@ -223,6 +224,37 @@
     });
   }
 
+  function saveWeatherCache(results) {
+    try {
+      if (!window.sessionStorage) return;
+      var data = {};
+      results.forEach(function (w, i) {
+        data[CONFIG[i].day] = w;
+      });
+      sessionStorage.setItem(CACHE_KEY, JSON.stringify(data));
+    } catch (_) {
+      // Ignore storage access issues.
+    }
+  }
+
+  function loadWeatherCache() {
+    try {
+      if (!window.sessionStorage) return false;
+      var raw = sessionStorage.getItem(CACHE_KEY);
+      if (!raw) return false;
+      var data = JSON.parse(raw);
+      CONFIG.forEach(function (cfg) {
+        var w = data[cfg.day];
+        if (!w) return;
+        var el = document.querySelector('#reisiplaan .day-weather[data-day="' + cfg.day + '"]');
+        if (el) applyWeather(el, w);
+      });
+      return true;
+    } catch (_) {
+      return false;
+    }
+  }
+
   function refreshAllWeather() {
     if (updating) return;
     var blocks = document.querySelectorAll("#reisiplaan .day-weather[data-day]");
@@ -243,6 +275,9 @@
     });
 
     Promise.all(promises)
+      .then(function (results) {
+        saveWeatherCache(results);
+      })
       .catch(function () {
         blocks.forEach(function (el) {
           var btn = el.querySelector(".weather-refresh");
@@ -262,21 +297,9 @@
       });
   }
 
-  function refreshOncePerSession() {
-    var key = "hiiumaa_weather_refreshed_v1";
-    try {
-      if (window.sessionStorage && sessionStorage.getItem(key)) return;
-    } catch (_) {
-      // Ignore storage access issues and continue with refresh.
-    }
-
+  function initWeather() {
+    loadWeatherCache();
     refreshAllWeather();
-
-    try {
-      if (window.sessionStorage) sessionStorage.setItem(key, "1");
-    } catch (_) {
-      // Ignore storage access issues; manual refresh still works.
-    }
   }
 
   document.addEventListener("click", function (e) {
@@ -286,10 +309,9 @@
     refreshAllWeather();
   });
 
-  // Keep weather fresh after initial load or browser refresh.
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", refreshOncePerSession, { once: true });
+    document.addEventListener("DOMContentLoaded", initWeather, { once: true });
   } else {
-    refreshOncePerSession();
+    initWeather();
   }
 })();
