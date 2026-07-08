@@ -262,10 +262,34 @@
       });
   }
 
+  function refreshOncePerSession() {
+    var key = "hiiumaa_weather_refreshed_v1";
+    try {
+      if (window.sessionStorage && sessionStorage.getItem(key)) return;
+    } catch (_) {
+      // Ignore storage access issues and continue with refresh.
+    }
+
+    refreshAllWeather();
+
+    try {
+      if (window.sessionStorage) sessionStorage.setItem(key, "1");
+    } catch (_) {
+      // Ignore storage access issues; manual refresh still works.
+    }
+  }
+
   document.addEventListener("click", function (e) {
     var btn = e.target.closest(".weather-refresh");
     if (!btn) return;
     e.preventDefault();
     refreshAllWeather();
   });
+
+  // Keep weather fresh after initial load or browser refresh.
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", refreshOncePerSession, { once: true });
+  } else {
+    refreshOncePerSession();
+  }
 })();
